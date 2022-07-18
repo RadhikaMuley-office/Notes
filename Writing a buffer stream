@@ -1,0 +1,13 @@
+  //writing a stream: 
+const fs = require("fs");
+let readStream = fs.createReadStream("index.txt", {encoding:"utf-8"})
+
+let writeStream = fs.createWriteStream("text2.html",{encoding:"utf-8"})
+
+readStream.on("data", chunk => {
+    writeStream.write(chunk, err=>{
+        if (err) throw err;
+        console.log("successfully chunk data written");
+    });
+})
+
