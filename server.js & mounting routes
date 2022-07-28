@@ -1,0 +1,38 @@
+// auth.js
+const express = require("express");
+const router = express.Router();
+
+// Login Path
+
+router.get("/login", (req, res)=>{
+    res.send("<h1>Login Page</h1>");
+})
+
+// register Path
+router.get("/register", (req, res)=>{
+    res.send("<h1>Register Page</h1>");
+});
+
+
+module.exports = router;
+
+
+
+// server.js
+// mounting routes
+
+
+const express = require("express");
+const authRoute = require('./routes/auth');
+const productRoute = require('./routes/products');
+let app = express();
+
+//mount routes
+app.use("/auth", authRoute);
+app.use("/product" productRoute);
+
+app.listen(5000,err=>{
+    if (err) throw err
+    console.log("server is running successfully on 5000");
+});
+
